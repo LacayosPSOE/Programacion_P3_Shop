@@ -1,0 +1,13 @@
+EVERYTHING IN ENGLISH
+
+Assets:
+Folders and Files: PascalCase
+
+Code naming:
+Variables: _camelCase
+Functions: PascalCase
+
+Code Spacing (Where to put blank lines):
+- Before and After control structures
+- Between Functions
+- After variable declarations
