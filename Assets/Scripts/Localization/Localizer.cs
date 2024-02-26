@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Localizer : MonoBehaviour
 {
@@ -17,8 +19,12 @@ public class Localizer : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        _currentLanguage = DefaultLanguage;
         LoadLanguageSheet();
+        
+        if (PlayerPrefs.HasKey("language"))
+            _currentLanguage = Enum.Parse<Language>(PlayerPrefs.GetString("language"));
+        else
+            _currentLanguage = DefaultLanguage;
     }
 
     public static string GetText(string textKey)

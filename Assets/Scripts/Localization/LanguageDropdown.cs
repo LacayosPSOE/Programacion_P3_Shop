@@ -18,5 +18,6 @@ public class LanguageDropdown : MonoBehaviour
         var _option = _dropdown.options[_dropdown.value].text;
         var _language = Enum.Parse<Language>(_option);
         Localizer.SetLanguage(_language);
+        PlayerPrefs.SetString("language", _option);
     }
 }
