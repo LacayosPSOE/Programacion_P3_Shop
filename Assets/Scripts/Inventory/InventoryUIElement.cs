@@ -11,10 +11,18 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     private Canvas _canvas;
     private GraphicRaycaster _raycaster;
-    private Transform _parent;
     private ItemBasic _item;
     private InventoryUI _inventory;
     private int _amount;
+    private bool _getStack;
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+            _getStack = true;
+        else
+            _getStack = false;
+    }
 
     public void SetStuff(InventorySlot slot, InventoryUI inventory)
     {
@@ -29,8 +37,6 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        _parent = transform.parent;
-
         // Start moving object from the beginning!
         transform.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0)
             / transform.lossyScale.x; // Thanks to the canvas scaler we need to devide pointer delta by canvas scale to match pointer movement.
@@ -67,13 +73,26 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
             Debug.Log(hit.gameObject.name);
 
             // Changing parent to new inventory
-            //transform.SetParent(hit.gameObject.transform);
+            if (hit.gameObject.TryGetComponent<InventoryUI>(out InventoryUI _destInventory))
+            {
+                int _amountSent = 0;
+                if (_getStack)
+                    _amountSent = _amount;
+                else
+                    _amountSent = 1;
 
-            _inventory.Inventory.RemoveItem(_item);
-            hit.gameObject.GetComponent<InventoryUI>().Inventory.AddItem(_item);
+                for (int i = 0; i < _amountSent; i++)
+                    SendItem(_destInventory);
+            }
         }
 
         // And centering item position
         transform.localPosition = Vector3.zero;
+    }
+
+    private void SendItem(InventoryUI destination)
+    {
+        _inventory.Inventory.RemoveItem(_item);
+        destination.Inventory.AddItem(_item);
     }
 }
