@@ -13,8 +13,10 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
     private GraphicRaycaster _raycaster;
     private ItemBasic _item;
     private InventoryUI _inventory;
+    private InventoryUI _otherInventory;
     private int _amount;
     private bool _getStack;
+    private bool _trade;
     private bool _consume;
 
     private void Update()
@@ -98,17 +100,20 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     private void SendItem(InventoryUI destination)
     {
-        _inventory.Inventory.RemoveItem(_item);
-        destination.Inventory.AddItem(_item);
+        if (_item.cost <= _inventory.Inventory.GetSlot(_item).Item.cost)
+        {
+            _inventory.Inventory.RemoveItem(_item);
+            destination.Inventory.AddItem(_item);
+        }
     }
 
     private void ExecuteAction()
-    { }
+    {
+        if (_trade)
+            SendItem(_otherInventory);
+    }
 
-    private void SetActionSell()
-    { }
-
-    private void SetActionBuy()
+    private void SetActionBuySell()
     { }
 
     private void SetActionConsume()
