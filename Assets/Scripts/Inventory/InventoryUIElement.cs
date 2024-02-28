@@ -116,7 +116,7 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
             }
     }
 
-    private void SetActionBuySell()
+    private void SetActionTrade()
     { }
 
     private void SetActionConsume()
