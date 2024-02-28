@@ -100,13 +100,8 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     private void SendItem(InventoryUI destination)
     {
-        //var _selfMoney = _inventory.Inventory.GetSlot(_item).Item.cost;
-
-        //if (_item.cost <= )
-        //{
         _inventory.Inventory.RemoveItem(_item);
         destination.Inventory.AddItem(_item);
-        //}
     }
 
     private void ExecuteAction()
