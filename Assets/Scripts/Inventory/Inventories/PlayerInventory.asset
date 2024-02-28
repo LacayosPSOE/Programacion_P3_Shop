@@ -15,7 +15,3 @@ MonoBehaviour:
   Slots:
   - _item: {fileID: 11400000, guid: 87a30ec8854eddd42bc90a9423bbe722, type: 2}
     _amount: 1
-  - _item: {fileID: 11400000, guid: 87a30ec8854eddd42bc90a9423bbe722, type: 2}
-    _amount: 1
-  - _item: {fileID: 11400000, guid: 21458737b0795eb4ab8c578c70ba3ea7, type: 2}
-    _amount: 2
