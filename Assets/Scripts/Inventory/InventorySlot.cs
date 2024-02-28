@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
-public class InventorySlot 
+public class InventorySlot
 {
     public int Amount => _amount;
     public ItemBasic Item => _item;
 
     [SerializeField]
     private ItemBasic _item;
+
     [SerializeField]
     private int _amount;
 
@@ -47,5 +45,3 @@ public class InventorySlot
         return _amount < 1;
     }
 }
-
-

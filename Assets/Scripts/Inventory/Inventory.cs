@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewInventory", menuName = "Inventory System/Inventory")]
 public class Inventory : ScriptableObject
 {
     [SerializeField]
-    List<InventorySlot> Slots;
+    private List<InventorySlot> Slots;
 
     public int Length => Slots.Count;
 
     public delegate void InventoryChangeDelegate();
+
     public InventoryChangeDelegate OnInventoryChange;
 
     public void AddItem(ItemBasic item)
@@ -58,7 +57,7 @@ public class Inventory : ScriptableObject
     {
         for (int i = 0; i < Slots.Count; i++)
         {
-            if (Slots[i].HasItem(item)) 
+            if (Slots[i].HasItem(item))
                 return Slots[i];
         }
 

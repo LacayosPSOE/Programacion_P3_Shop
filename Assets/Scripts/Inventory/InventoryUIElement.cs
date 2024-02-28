@@ -15,6 +15,7 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
     private InventoryUI _inventory;
     private int _amount;
     private bool _getStack;
+    private bool _consume;
 
     private void Update()
     {
@@ -33,6 +34,11 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
         _item = slot.Item;
         _amount = slot.Amount;
         _inventory = inventory;
+    }
+
+    private void OnMouseDown()
+    {
+        ExecuteAction();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -95,4 +101,16 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
         _inventory.Inventory.RemoveItem(_item);
         destination.Inventory.AddItem(_item);
     }
+
+    private void ExecuteAction()
+    { }
+
+    private void SetActionSell()
+    { }
+
+    private void SetActionBuy()
+    { }
+
+    private void SetActionConsume()
+    { }
 }
