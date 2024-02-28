@@ -6,9 +6,9 @@ public class InventoryUI : MonoBehaviour
     public Inventory Inventory;
     public InventoryUIElement ElementPrefab;
 
-    List<GameObject> _shownObjects;
+    private List<GameObject> _shownObjects;
 
-    void Start()
+    private void Start()
     {
         ShowInventory(Inventory);
     }
