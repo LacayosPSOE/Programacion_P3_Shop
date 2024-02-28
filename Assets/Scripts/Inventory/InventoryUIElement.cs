@@ -100,19 +100,25 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     private void SendItem(InventoryUI destination)
     {
-        var _selfMoney = _inventory.Inventory.GetSlot(_item).Item.cost
+        //var _selfMoney = _inventory.Inventory.GetSlot(_item).Item.cost;
 
-        if (_item.cost <= )
-        {
-            _inventory.Inventory.RemoveItem(_item);
-            destination.Inventory.AddItem(_item);
-        }
+        //if (_item.cost <= )
+        //{
+        _inventory.Inventory.RemoveItem(_item);
+        destination.Inventory.AddItem(_item);
+        //}
     }
 
     private void ExecuteAction()
     {
         if (_trade)
             SendItem(_otherInventory);
+        else if (_consume)
+            if (_item is ConsumableItem)
+            {
+                (_item as ConsumableItem).Use(gameObject.GetComponent<IConsume>());
+                _inventory.ItemUsed(_item);
+            }
     }
 
     private void SetActionBuySell()
