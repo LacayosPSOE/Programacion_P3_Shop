@@ -5,6 +5,7 @@ public class InventoryUI : MonoBehaviour
 {
     public Inventory Inventory;
     public InventoryUIElement ElementPrefab;
+    public bool _isPlayer;
 
     private List<GameObject> _shownObjects;
 

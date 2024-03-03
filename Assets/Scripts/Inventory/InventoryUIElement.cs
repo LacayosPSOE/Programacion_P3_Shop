@@ -8,7 +8,6 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 {
     public Image Image;
     public TextMeshProUGUI AmountText;
-    public bool _isPlayer;
 
     private Canvas _canvas;
     private GraphicRaycaster _raycaster;
@@ -111,7 +110,7 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
         destination.Inventory.AddItem(_item);
         int _itemValue = _item._cost;
 
-        if (_isPlayer)
+        if (_inventory._isPlayer)
         {
             CoinManager.Instance.SellItem(_itemValue);
         }
