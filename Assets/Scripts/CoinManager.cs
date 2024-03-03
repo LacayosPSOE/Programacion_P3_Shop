@@ -60,7 +60,7 @@ public class CoinManager : MonoBehaviour
     {
         if (_totalCoinText != null)
         {
-            _totalCoinText.text = Localizer.GetText("coins") + ": " + _currentCoins;
+            _totalCoinText.text = _currentCoins.ToString();
         }
     }
     //private void DisplayMessage(string key)

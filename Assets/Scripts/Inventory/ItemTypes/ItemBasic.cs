@@ -6,5 +6,5 @@ public class ItemBasic : ScriptableObject
     public string _name;
     public Sprite _imageUI;
     public bool _isStackable;
-    public int _cost;
+    public int _cost = 20;
 }

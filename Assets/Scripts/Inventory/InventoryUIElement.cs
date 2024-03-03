@@ -109,6 +109,16 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
     {
         _inventory.Inventory.RemoveItem(_item);
         destination.Inventory.AddItem(_item);
+        int _itemValue = _item._cost;
+
+        if (_isPlayer)
+        {
+            CoinManager.Instance.SellItem(_itemValue);
+        }
+        else
+        {
+            CoinManager.Instance.BuyItem(_itemValue);
+        }
     }
 
     private void ExecuteAction()
@@ -116,15 +126,6 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
         if (_trade)
         {
             SendItem(_otherInventory);
-            int _itemValue = _item._cost;
-            if (_isPlayer) 
-            {
-                CoinManager.Instance.SellItem(_itemValue);
-            }
-            else
-            {
-                CoinManager.Instance.BuyItem(_itemValue);
-            }
 
         }
         else if (_consume)
