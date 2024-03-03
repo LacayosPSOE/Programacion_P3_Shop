@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -276,6 +277,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &519420033
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 84075876e805d5e4693d8478f9809f5c, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &969966361
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,6 +464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Inventory: {fileID: 11400000, guid: 1b2ff3b95316ceb45a359999e3a0af79, type: 2}
   ElementPrefab: {fileID: 6695354917363149856, guid: af8e12beb94aaab41ae0079f71af2338, type: 3}
+  _isPlayer: 1
 --- !u!114 &969966366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,6 +583,8 @@ RectTransform:
   m_LocalScale: {x: 0.021132713, y: 0.021132713, z: 0.021132713}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1826066844}
+  - {fileID: 1390897684}
   - {fileID: 1234843674}
   - {fileID: 1929052703}
   - {fileID: 1062921993}
@@ -674,8 +774,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1639798952}
-  - {fileID: 1390897684}
-  - {fileID: 1826066844}
   - {fileID: 1239889702}
   m_Father: {fileID: 1049410043}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -789,6 +887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Inventory: {fileID: 11400000, guid: ccd9fde1a32b7024ab0a4f29e91ba081, type: 2}
   ElementPrefab: {fileID: 6695354917363149856, guid: af8e12beb94aaab41ae0079f71af2338, type: 3}
+  _isPlayer: 0
 --- !u!114 &1239889706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -844,7 +943,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1234843674}
+  m_Father: {fileID: 1049410043}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1122,7 +1221,7 @@ GameObject:
   - component: {fileID: 1826066847}
   - component: {fileID: 1826066849}
   m_Layer: 5
-  m_Name: Coins (1)
+  m_Name: AmountOfCoins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1140,7 +1239,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1234843674}
+  m_Father: {fileID: 1049410043}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
