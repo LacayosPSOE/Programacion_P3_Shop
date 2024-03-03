@@ -66,11 +66,17 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        // Continue moving object around screen
-        transform.localPosition +=
-            new Vector3(eventData.delta.x, eventData.delta.y, 0) /
-            transform.lossyScale.x;
+        // Convierte la posición del ratón a la posición en el mundo
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(
+            _canvas.transform as RectTransform,
+            eventData.position,
+            eventData.pressEventCamera,
+            out Vector3 worldPoint);
+
+        // Asigna la posición al objeto
+        transform.position = worldPoint;
     }
+
 
     public void OnEndDrag(PointerEventData eventData)
     {
