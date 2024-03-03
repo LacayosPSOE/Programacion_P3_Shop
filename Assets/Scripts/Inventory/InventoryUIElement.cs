@@ -8,6 +8,7 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 {
     public Image Image;
     public TextMeshProUGUI AmountText;
+    public bool _isPlayer;
 
     private Canvas _canvas;
     private GraphicRaycaster _raycaster;
@@ -29,7 +30,7 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public void SetStuff(InventorySlot slot, InventoryUI inventory)
     {
-        Image.sprite = slot.Item.ImageUI;
+        Image.sprite = slot.Item._imageUI;
         AmountText.text = slot.Amount.ToString();
         AmountText.enabled = slot.Amount > 1;
 
@@ -107,7 +108,19 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
     private void ExecuteAction()
     {
         if (_trade)
+        {
             SendItem(_otherInventory);
+            int _itemValue = _item._cost;
+            if (_isPlayer) 
+            {
+                CoinManager.Instance.SellItem(_itemValue);
+            }
+            else
+            {
+                CoinManager.Instance.BuyItem(_itemValue);
+            }
+
+        }
         else if (_consume)
             if (_item is ConsumableItem)
             {

@@ -25,7 +25,7 @@ public class InventorySlot
 
     internal bool CanHold(ItemBasic item)
     {
-        if (item.IsStackable) return (item == _item);
+        if (item._isStackable) return (item == _item);
 
         return false;
     }

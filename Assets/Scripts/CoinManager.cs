@@ -7,6 +7,8 @@ public class CoinManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public static int _currentCoins = 100;
+    public static CoinManager Instance;
+
 
     public TextMeshProUGUI _totalCoinText;
     //public TextMeshProUGUI _messageText;
@@ -19,6 +21,21 @@ public class CoinManager : MonoBehaviour
     void Update()
     {
         
+    }
+    void Awake()
+    {
+        // Ensure there's only one instance of CoinManager
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        UpdateTotalCoinText();
     }
     public bool BuyItem(int _cost)
     {

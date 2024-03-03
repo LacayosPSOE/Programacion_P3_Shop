@@ -19,7 +19,7 @@ public class Inventory : ScriptableObject
 
         var slot = GetSlot(item);
 
-        if (slot != null && item.IsStackable)
+        if (slot != null && item._isStackable)
         {
             slot.AddOne();
         }
