@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: ShopKeeperInventory
   m_EditorClassIdentifier: 
   Slots:
-  - _item: {fileID: 11400000, guid: 21458737b0795eb4ab8c578c70ba3ea7, type: 2}
-    _amount: 7
-  - _item: {fileID: 11400000, guid: 87a30ec8854eddd42bc90a9423bbe722, type: 2}
+  - _item: {fileID: 11400000, guid: 241a7e6b9caf35d4d82c93d9d006f895, type: 2}
+    _amount: 5
+  - _item: {fileID: 11400000, guid: 1354bfb8f2119564584245bb5d33d033, type: 2}
+    _amount: 3
+  - _item: {fileID: 11400000, guid: a298291e222ddce4cb3b1783a455c9d2, type: 2}
     _amount: 1

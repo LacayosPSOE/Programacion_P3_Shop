@@ -13,5 +13,13 @@ MonoBehaviour:
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
   Slots:
-  - _item: {fileID: 11400000, guid: 87a30ec8854eddd42bc90a9423bbe722, type: 2}
+  - _item: {fileID: 11400000, guid: 241a7e6b9caf35d4d82c93d9d006f895, type: 2}
     _amount: 1
+  - _item: {fileID: 11400000, guid: e076424d6fda69643a88a7980f87ad7d, type: 2}
+    _amount: 1
+  - _item: {fileID: 11400000, guid: 82ac6fae6274b694da0476e779136168, type: 2}
+    _amount: 1
+  - _item: {fileID: 11400000, guid: 1354bfb8f2119564584245bb5d33d033, type: 2}
+    _amount: 1
+  - _item: {fileID: 11400000, guid: 62e317c6077f9af4abd8e57f815eb984, type: 2}
+    _amount: 7
