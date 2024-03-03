@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class CoinManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     public static int _currentCoins = 100;
     public static CoinManager Instance;
-
 
     public TextMeshProUGUI _totalCoinText;
     //public TextMeshProUGUI _messageText;
@@ -18,10 +14,6 @@ public class CoinManager : MonoBehaviour
         UpdateTotalCoinText();
     }
 
-    void Update()
-    {
-        
-    }
     void Awake()
     {
         // Ensure there's only one instance of CoinManager
@@ -31,12 +23,11 @@ public class CoinManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else
-        {
             Destroy(gameObject);
-        }
 
         UpdateTotalCoinText();
     }
+
     public bool BuyItem(int _cost)
     {
         if (_currentCoins > _cost)
@@ -51,11 +42,13 @@ public class CoinManager : MonoBehaviour
             return false;
         }
     }
+
     public void SellItem(int _cost)
     {
         _currentCoins += _cost;
         UpdateTotalCoinText();
     }
+
     private void UpdateTotalCoinText()
     {
         if (_totalCoinText != null)
@@ -63,11 +56,9 @@ public class CoinManager : MonoBehaviour
             _totalCoinText.text = _currentCoins.ToString();
         }
     }
-    //private void DisplayMessage(string key)
-    //{
-       // if (_messageText != null)
-      //  {
-        //    _messageText.text = Localizer.GetText(key);
-        //}
-    //}
+
+    public int GetCurrentCoins()
+    {
+        return _currentCoins;
+    }
 }

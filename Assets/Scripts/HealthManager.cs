@@ -1,7 +1,3 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.UI;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
@@ -10,12 +6,7 @@ public class HealthManager : MonoBehaviour
     public int  _currentHealth;
 
     public RectTransform _transform;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -23,7 +14,7 @@ public class HealthManager : MonoBehaviour
             Vector2 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(clickPosition, Vector2.zero);
 
-            if (hit.collider != null && hit.collider.gameObject == gameObject)
+            if (hit.collider != null)
             {
                 _currentHealth -= 10;
                 Vector2 _howBig = _transform.sizeDelta;

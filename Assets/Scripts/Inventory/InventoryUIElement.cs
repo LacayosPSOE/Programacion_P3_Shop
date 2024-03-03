@@ -13,11 +13,8 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
     private GraphicRaycaster _raycaster;
     private ItemBasic _item;
     private InventoryUI _inventory;
-    private InventoryUI _otherInventory;
     private int _amount;
     private bool _getStack;
-    private bool _trade;
-    private bool _consume;
 
     private void Update()
     {
@@ -38,16 +35,10 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
         _inventory = inventory;
     }
 
-    private void OnMouseDown()
-    {
-        ExecuteAction();
-    }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         // Start moving object from the beginning!
-        transform.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0)
-            / transform.lossyScale.x; // Thanks to the canvas scaler we need to devide pointer delta by canvas scale to match pointer movement.
+        transform.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0) / transform.lossyScale.x; // Thanks to the canvas scaler we need to devide pointer delta by canvas scale to match pointer movement.
 
         // We need a few references from UI
         if (!_canvas)
@@ -84,8 +75,6 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
         _raycaster.Raycast(eventData, results);
         foreach (var hit in results)
         {
-            Debug.Log(hit.gameObject.name);
-
             // Changing parent to new inventory
             if (hit.gameObject.TryGetComponent<InventoryUI>(out InventoryUI _destInventory))
             {
@@ -106,38 +95,16 @@ public class InventoryUIElement : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     private void SendItem(InventoryUI destination)
     {
-        _inventory.Inventory.RemoveItem(_item);
-        destination.Inventory.AddItem(_item);
         int _itemValue = _item._cost;
+        if (_itemValue < CoinManager.Instance.GetCurrentCoins())
+        {
+            _inventory.Inventory.RemoveItem(_item);
+            destination.Inventory.AddItem(_item);
+        }
 
         if (_inventory._isPlayer)
-        {
             CoinManager.Instance.SellItem(_itemValue);
-        }
         else
-        {
             CoinManager.Instance.BuyItem(_itemValue);
-        }
     }
-
-    private void ExecuteAction()
-    {
-        if (_trade)
-        {
-            SendItem(_otherInventory);
-
-        }
-        else if (_consume)
-            if (_item is ConsumableItem)
-            {
-                (_item as ConsumableItem).Use(gameObject.GetComponent<IConsume>());
-                _inventory.ItemUsed(_item);
-            }
-    }
-
-    private void SetActionTrade()
-    { }
-
-    private void SetActionConsume()
-    { }
 }
